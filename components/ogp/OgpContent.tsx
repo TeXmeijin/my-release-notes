@@ -105,7 +105,7 @@ export type OgpProps = {
   font: string
 }
 
-export const GetMarkUp = (props: OgpProps) => {
+export const GetMarkUp = (props: { release: Release }) => {
   const fontPath = path.resolve(process.cwd(), './assets/MPLUSRounded1c-Bold.ttf')
   const font = fs.readFileSync(fontPath, { encoding: 'base64' })
   const element = React.createElement(OgpContent, { font, release: props.release })
