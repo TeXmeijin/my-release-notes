@@ -15,7 +15,8 @@ export default mockMethods<Methods>({
       createdAt: '2020-08-09T13:49:53.413Z',
       version: '26.0.0',
       content: {
-        features: '## あああああ\n### ああああああ\nhogehoge',
+        features: '# ほげほげ見出し\n## あああああ\n### ああああああ\nhogehoge',
+        keep: '# aaaa\n## aaaaa\n### bbbbbbb',
       },
     },
   }),

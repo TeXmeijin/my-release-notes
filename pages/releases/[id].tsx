@@ -5,7 +5,7 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import Loading from '../../components/parts/loading/Loading'
 import { findRelease, getAllReleasesLatest } from '../../packages/releases/releaseQuery'
-import { Release, ReleaseContent } from '../../types/release/type'
+import { Release, ReleaseContentHeading, MasterReleaseContents } from '../../types/release/type'
 
 export const getStaticProps: GetStaticProps<{ release: Release }> = async (
   context: GetStaticPropsContext<{ id: string }>
@@ -50,10 +50,17 @@ const ReleaseDetailPage = ({ release }: InferGetStaticPropsType<typeof getStatic
         <title>{release.version}</title>
       </Head>
       <h1>{release.version}</h1>
-      {Object.keys(release.content).map((key: ReleaseContent['type']) => {
+      {Object.keys(release.content).map((key: ReleaseContentHeading) => {
         return (
           <div key={key}>
-            <ReactMarkdown children={release.content[key]}></ReactMarkdown>
+            <h3>{MasterReleaseContents[key]}</h3>
+            <ReactMarkdown
+              components={{
+                h1: 'h3',
+                h2: 'h3',
+              }}
+              children={release.content[key]}
+            ></ReactMarkdown>
           </div>
         )
       })}
