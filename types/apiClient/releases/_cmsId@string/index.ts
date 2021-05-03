@@ -16,7 +16,7 @@ export default mockMethods<Methods>({
       version: '26.0.0',
       content: {
         features: '# ほげほげ見出し\n## あああああ\n### ああああああ\nhogehoge',
-        keep: '# aaaa\n## aaaaa\n### bbbbbbb',
+        keep: '# aaaa\n## aaaaa\n### bbbbbbb\n [https://manalink.jp](https://manalink.jp) ',
       },
     },
   }),
