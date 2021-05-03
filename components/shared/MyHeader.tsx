@@ -7,7 +7,7 @@ export const MyHeader = () => {
     <>
       <header className={styles.header}>
         <Link href={pagesPath.$url()} passHref>
-          <a className={styles.serviceName}>じぶんRelease Notes</a>
+          <a className={styles.serviceName}>じぶんRelease Notes(β)</a>
         </Link>
       </header>
     </>
