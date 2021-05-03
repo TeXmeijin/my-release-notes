@@ -15,6 +15,7 @@ export type ReleaseContent = {
 export type ReleaseContentHeading = 'keep' | 'features'
 
 export const MasterReleaseContents: { [key in ReleaseContentHeading]: string } = {
-  features: '🚀 Features',
+  // FIXME: 絵文字を使うとOGPで文字化けするので使わない
+  features: 'Features',
   keep: 'Keep',
 }
