@@ -1,11 +1,12 @@
+import { ReleaseContent } from '@/components/release/ReleaseContent'
+import { Release } from '@/types/release/type'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import Head from 'next/head'
+import styles from '@/styles/pages/ReleaseDetail.module.scss'
 import { useRouter } from 'next/router'
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import Loading from '../../components/parts/loading/Loading'
 import { findRelease, getAllReleasesLatest } from '../../packages/releases/releaseQuery'
-import { Release, ReleaseContentHeading, MasterReleaseContents } from '../../types/release/type'
+import Page from '../../components/shared/Page'
 
 export const getStaticProps: GetStaticProps<{ release: Release }> = async (
   context: GetStaticPropsContext<{ id: string }>
@@ -45,26 +46,16 @@ const ReleaseDetailPage = ({ release }: InferGetStaticPropsType<typeof getStatic
   }
 
   return (
-    <div>
-      <Head>
-        <title>{release.version}</title>
-      </Head>
-      <h1>{release.version}</h1>
-      {Object.keys(release.content).map((key: ReleaseContentHeading) => {
-        return (
-          <div key={key}>
-            <h3>{MasterReleaseContents[key]}</h3>
-            <ReactMarkdown
-              components={{
-                h1: 'h3',
-                h2: 'h3',
-              }}
-              children={release.content[key]}
-            ></ReactMarkdown>
+    <Page title={`バージョン${release.version}`}>
+      <div className={styles.page}>
+        <div className={styles.releaseContainer}>
+          <h1 className={styles.releaseContainer__name}>{release.version}</h1>
+          <div className={styles.releaseContainer__body}>
+            <ReleaseContent content={release.content}></ReleaseContent>
           </div>
-        )
-      })}
-    </div>
+        </div>
+      </div>
+    </Page>
   )
 }
 

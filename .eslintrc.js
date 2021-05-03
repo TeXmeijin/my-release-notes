@@ -16,6 +16,7 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/no-children-prop': 'off',
+    'react/prop-types': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     indent: ['error', 2],
     'linebreak-style': ['error', 'unix'],

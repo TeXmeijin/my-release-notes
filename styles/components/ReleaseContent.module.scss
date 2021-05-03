@@ -1,0 +1,25 @@
+@use "../shared/_colors.scss";
+
+.heading {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.subHeading {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.subHeading2 {
+  font-weight: bold;
+}
+
+.contentItem {
+  & + & {
+    margin-top: 16px;
+  }
+}
+
+.link {
+  color: colors.$link;
+}

@@ -1,0 +1,20 @@
+@use "../shared/_colors.scss";
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 12px;
+}
+
+.releaseContainer {
+  display: flex;
+
+  .releaseContainer__name {
+    font-weight: bold;
+    font-size: 1.6rem;
+  }
+
+  .releaseContainer__body {
+    margin-left: 24px;
+  }
+}
