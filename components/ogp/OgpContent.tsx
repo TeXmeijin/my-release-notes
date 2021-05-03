@@ -11,11 +11,13 @@ const globalStyles = `
     display: grid;
     padding: 0;
     margin: 0;
-    font-family: 'M PLUS Rounded 1c', Segoe UI, Helvetica, Arial, sans-serif;
+    font-family: 'M PLUS Rounded 1c', Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji;
   }
 
   .markdown-body.markdown-body {
-    font-family: 'M PLUS Rounded 1c', Segoe UI, Helvetica, Arial, sans-serif;
+    font-family: 'M PLUS Rounded 1c', Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji;
   }
 `
 const OgpContent = ({ release, font }: OgpProps) => (
@@ -30,7 +32,7 @@ const OgpContent = ({ release, font }: OgpProps) => (
           __html: `
         @font-face {
           font-family: 'M PLUS Rounded 1c';
-          src: url(data:font/ttf;charset=utf-8;base64,${font}) format('truetype');
+          src: url(data:font/otf;charset=utf-8;base64,${font}) format('opentype');
         }
       `,
         }}
@@ -106,7 +108,7 @@ export type OgpProps = {
 }
 
 export const GetMarkUp = (props: { release: Release }) => {
-  const fontPath = path.resolve(process.cwd(), './assets/MPLUSRounded1c-Bold.ttf')
+  const fontPath = path.resolve(process.cwd(), './assets/NotoSansJP-Bold.otf')
   const font = fs.readFileSync(fontPath, { encoding: 'base64' })
   const element = React.createElement(OgpContent, { font, release: props.release })
   return ReactDOM.renderToStaticMarkup(element)
