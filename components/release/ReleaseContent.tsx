@@ -14,6 +14,9 @@ type Props = {
 const ReleaseContentHeader = (props: PropsWithChildren<unknown>) => {
   return <h3 className={styles.subHeading} {...props}></h3>
 }
+const ReleaseContentLink = (props: PropsWithChildren<unknown>) => {
+  return <a target="_blank" className={styles.link} {...props}></a>
+}
 
 export const ReleaseContent = (props: Props) => {
   return (
@@ -27,6 +30,7 @@ export const ReleaseContent = (props: Props) => {
                 h1: ReleaseContentHeader,
                 h2: ReleaseContentHeader,
                 h3: ReleaseContentHeader,
+                a: ReleaseContentLink,
               }}
               children={props.content[key]}
             ></ReactMarkdown>

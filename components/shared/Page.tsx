@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import React, { ReactNode, useEffect } from 'react'
+import React, { PropsWithChildren, ReactNode, useEffect } from 'react'
 import { MyHeader } from './MyHeader'
-
 type Props = {
   children: ReactNode[] | ReactNode
 } & Partial<Meta>
@@ -21,7 +20,7 @@ export type Meta = {
 const DEFAULT_SITE_NAME = 'じぶんリリースノート'
 export const PRODUCTION_ORIGIN = 'https://my-release-notes.meijin.dev'
 
-export default function Page({ children, ...meta }: Props) {
+const Page: React.FC<Props> = ({ children, ...meta }) => {
   const router = useRouter()
 
   const computedMeta = ((): Meta => {
@@ -87,3 +86,5 @@ export default function Page({ children, ...meta }: Props) {
     </>
   )
 }
+
+export default Page
