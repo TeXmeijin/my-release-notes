@@ -32,7 +32,7 @@ const OgpContent = ({ release, font }: OgpProps) => (
           __html: `
         @font-face {
           font-family: 'M PLUS Rounded 1c';
-          src: url(data:font/otf;charset=utf-8;base64,${font}) format('opentype');
+          src: url(data:font/ttf;charset=utf-8;base64,${font}) format('truetype');
         }
       `,
         }}
@@ -108,7 +108,7 @@ export type OgpProps = {
 }
 
 export const GetMarkUp = (props: { release: Release }) => {
-  const fontPath = path.resolve(process.cwd(), './assets/NotoSansJP-Bold.otf')
+  const fontPath = path.resolve(process.cwd(), './assets/MPLUSRounded1c-Bold.ttf')
   const font = fs.readFileSync(fontPath, { encoding: 'base64' })
   const element = React.createElement(OgpContent, { font, release: props.release })
   return ReactDOM.renderToStaticMarkup(element)
