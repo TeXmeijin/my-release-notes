@@ -7,7 +7,7 @@ export type Release = {
   }
 }
 
-type ReleaseContent = {
+export type ReleaseContent = {
   type: 'keep' | 'features'
   label: string
 }
