@@ -4,7 +4,9 @@
   "author": "TeXmeijin",
   "license": "MIT",
   "scripts": {
-    "dev": "next dev",
+    "dev": "run-p dev:*",
+    "dev:pathpida": "pathpida --watch",
+    "dev:next": "next dev",
     "build": "aspida --build && aspida-mock && next build",
     "build:api": "aspida --build && aspida-mock",
     "start": "next start"
@@ -28,9 +30,11 @@
     "@aspida/axios": "^1.7.0",
     "axios": "^0.21.1",
     "next": "^10.2.0",
+    "pathpida": "^0.15.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-markdown": "^6.0.1",
+    "sass": "^1.32.12",
     "stylelint-config-recommended": "^5.0.0"
   },
   "devDependencies": {
@@ -43,6 +47,7 @@
     "eslint-plugin-react": "^7.23.2",
     "husky": "^4.3.8",
     "lint-staged": "^10.2.11",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.13.1",
     "typescript": "^4.2.4"

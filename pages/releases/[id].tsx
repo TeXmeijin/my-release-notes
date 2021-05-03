@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import Loading from '../../components/parts/loading/Loading'
 import { findRelease, getAllReleasesLatest } from '../../packages/releases/releaseQuery'
+import Page from '../../components/shared/Page'
 
 export const getStaticProps: GetStaticProps<{ release: Release }> = async (
   context: GetStaticPropsContext<{ id: string }>
@@ -45,13 +46,13 @@ const ReleaseDetailPage = ({ release }: InferGetStaticPropsType<typeof getStatic
   }
 
   return (
-    <div>
+    <Page title={`バージョン${release.version}`}>
       <Head>
         <title>{release.version}</title>
       </Head>
       <h1>{release.version}</h1>
       <ReleaseContent content={release.content}></ReleaseContent>
-    </div>
+    </Page>
   )
 }
 

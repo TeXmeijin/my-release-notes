@@ -5,6 +5,7 @@ import { getAllUsers } from '@/packages/users/userQuery'
 import { Release } from '@/types/release/type'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
+import Page from '../../../../components/shared/Page'
 
 export const getStaticProps: GetStaticProps<{ releases: Release[] }> = async (
   context: GetStaticPropsContext<{ id: string }>
@@ -42,13 +43,13 @@ const ReleasesPage = ({ releases }: InferGetStaticPropsType<typeof getStaticProp
   }
 
   return (
-    <div>
+    <Page title="ユーザーさんのリリースノート一覧">
       <div>
         {releases.map(release => {
           return <ReleaseItem key={release.releaseId} release={release}></ReleaseItem>
         })}
       </div>
-    </div>
+    </Page>
   )
 }
 

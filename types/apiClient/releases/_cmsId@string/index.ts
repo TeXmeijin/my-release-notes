@@ -15,7 +15,10 @@ export default mockMethods<Methods>({
       createdAt: '2020-08-09T13:49:53.413Z',
       version: '26.0.0',
       content: {
-        features: '# ほげほげ見出し\n## あああああ\n### ああああああ\nhogehoge',
+        features: `
+- GraphQLをLaravel上に実装しました
+- Recoilのドキュメントを一通り読みました
+        `,
         keep: '# aaaa\n## aaaaa\n### bbbbbbb\n [https://manalink.jp](https://manalink.jp) ',
       },
     },

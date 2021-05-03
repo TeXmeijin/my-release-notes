@@ -4,7 +4,7 @@ import {
   ReleaseContentHeading,
 } from '@/types/release/type'
 import ReactMarkdown from 'react-markdown'
-import styles from '@/styles/components/ReleaseContent.module.css'
+import styles from '@/styles/components/ReleaseContent.module.scss'
 import { PropsWithChildren } from 'react'
 
 type Props = {
@@ -20,7 +20,7 @@ export const ReleaseContent = (props: Props) => {
     <>
       {Object.keys(props.content).map((key: ReleaseContentHeading) => {
         return (
-          <div key={key}>
+          <div className={styles.contentItem} key={key}>
             <h3 className={styles.heading}>{MasterReleaseContents[key]}</h3>
             <ReactMarkdown
               components={{

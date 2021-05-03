@@ -11,3 +11,9 @@
 .subHeading2 {
   font-weight: bold;
 }
+
+.contentItem {
+  & + & {
+    margin-top: 16px;
+  }
+}

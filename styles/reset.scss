@@ -1,3 +1,5 @@
+@use "./shared/_colors.scss";
+
 html,
 body {
   padding: 0;
@@ -7,7 +9,7 @@ body {
 }
 
 a {
-  color: #0366d6;
+  color: colors.$link;
   text-decoration: none;
 }
 
@@ -109,4 +111,9 @@ span,
 div {
   line-height: 1.6;
   letter-spacing: 0.5px;
+  color: colors.$body;
+}
+
+ul {
+  padding-left: 32px;
 }
