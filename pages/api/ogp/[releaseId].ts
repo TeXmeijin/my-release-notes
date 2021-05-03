@@ -12,11 +12,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const viewport = { width: 1200, height: 630 }
 
   // ブラウザインスタンスの生成
-  const browser = await playwright.launchChromium({
-    headless: true,
-    args: ['--no-sandbox'],
-    ignoreDefaultArgs: ['--disable-extensions'],
-  })
+  const browser = await playwright.launchChromium()
   const page = await browser.newPage({ viewport })
 
   // HTMLの生成
