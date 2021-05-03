@@ -12,15 +12,15 @@ const globalStyles = `
     padding: 0;
     margin: 0;
     font-family: 'M PLUS Rounded 1c', Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji,
-    Segoe UI Emoji;
+    Segoe UI Emoji, NotoColorEmoji;
   }
 
   .markdown-body.markdown-body {
     font-family: 'M PLUS Rounded 1c', Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji,
-    Segoe UI Emoji;
+    Segoe UI Emoji, NotoColorEmoji;
   }
 `
-const OgpContent = ({ release, font }: OgpProps) => (
+const OgpContent = ({ release, font, emojiFont }: OgpProps) => (
   <html>
     <head>
       <link
@@ -33,6 +33,10 @@ const OgpContent = ({ release, font }: OgpProps) => (
         @font-face {
           font-family: 'M PLUS Rounded 1c';
           src: url(data:font/ttf;charset=utf-8;base64,${font}) format('truetype');
+        }
+        @font-face {
+          font-family: 'NotoColorEmoji';
+          src: url(data:font/ttf;charset=utf-8;base64,${emojiFont}) format('truetype');
         }
       `,
         }}
@@ -105,11 +109,14 @@ const OgpContent = ({ release, font }: OgpProps) => (
 export type OgpProps = {
   release: Release
   font: string
+  emojiFont: string
 }
 
 export const GetMarkUp = (props: { release: Release }) => {
   const fontPath = path.resolve(process.cwd(), './assets/MPLUSRounded1c-Bold.ttf')
   const font = fs.readFileSync(fontPath, { encoding: 'base64' })
-  const element = React.createElement(OgpContent, { font, release: props.release })
+  const emojiFontPath = path.resolve(process.cwd(), './assets/NotoColorEmoji.ttf')
+  const emojiFont = fs.readFileSync(emojiFontPath, { encoding: 'base64' })
+  const element = React.createElement(OgpContent, { font, release: props.release, emojiFont })
   return ReactDOM.renderToStaticMarkup(element)
 }
