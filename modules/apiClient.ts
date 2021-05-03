@@ -14,4 +14,4 @@ const fetchConfig = {
 
 // in local development, use aspida-mock.
 // @see https://github.com/aspida/aspida/tree/master/packages/aspida-mock
-export const apiClient = process.env.NODE_ENV === 'development_' ? mock(mockClient()) : api(aspida(axios, fetchConfig))
+export const apiClient = process.env.NODE_ENV === 'test' ? mock(mockClient()) : api(aspida(axios, fetchConfig))

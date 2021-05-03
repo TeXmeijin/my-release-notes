@@ -1,7 +1,7 @@
 import { findRelease } from '@/packages/releases/releaseQuery'
 import { NextApiRequest, NextApiResponse } from 'next'
 import * as playwright from 'playwright-aws-lambda'
-import { GetMarkUp } from '../../../components/ogp/Content'
+import { GetMarkUp } from '../../../components/ogp/OgpContent'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   // Releaseオブジェクトの取得

@@ -6,12 +6,32 @@
   padding: 24px 12px;
 }
 
+.author {
+  display: flex;
+  align-items: center;
+  padding-bottom: 8px;
+  font-size: 0.9rem;
+
+  .authorName {
+    margin-left: 12px;
+    font-size: 1.1rem;
+  }
+
+  .authorImage {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+}
+
 .releaseContainer {
   display: flex;
+  margin-top: 8px;
 
   .releaseContainer__name {
     font-weight: bold;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    color: colors.$link;
   }
 
   .releaseContainer__body {

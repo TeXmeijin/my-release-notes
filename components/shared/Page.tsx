@@ -24,7 +24,7 @@ const Page: React.FC<Props> = ({ children, ...meta }) => {
   const computedMeta = ((): Meta => {
     const defaultMeta: Meta = {
       title: DEFAULT_SITE_NAME,
-      titleSuffix: 'じぶんリリースノート',
+      titleSuffix: 'じぶんRelease Notes',
       description:
         'あなた自身のリリースノートを作成しよう！毎週、毎月、毎年お好きな節目で日記代わりに自分が勉強した内容、やったこと、できるようになったことなどを記録しよう',
       ogp: `${PRODUCTION_ORIGIN}/meta/ogp.png`,

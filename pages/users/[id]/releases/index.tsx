@@ -1,20 +1,23 @@
 import Loading from '@/components/parts/loading/Loading'
 import ReleaseItem from '@/components/release/ReleaseItem'
 import { getUserReleasesLatest } from '@/packages/releases/releaseQuery'
-import { getAllUsers } from '@/packages/users/userQuery'
+import { findUser, getAllUsers } from '@/packages/users/userQuery'
 import { Release } from '@/types/release/type'
+import { User } from '@/types/user/types'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import Page from '../../../../components/shared/Page'
 
-export const getStaticProps: GetStaticProps<{ releases: Release[] }> = async (
+export const getStaticProps: GetStaticProps<{ releases: Release[]; user: User }> = async (
   context: GetStaticPropsContext<{ id: string }>
 ) => {
-  const releases = await getUserReleasesLatest({ userId: 'XXXX' })
+  const releases = await getUserReleasesLatest({ userId: id })
+  const user = await findUser({ userId: id })
 
   return {
     props: {
       releases,
+      user,
     },
     revalidate: 1,
   }
@@ -33,7 +36,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const ReleasesPage = ({ releases }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const ReleasesPage = ({ releases, user }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter()
 
   // If the page is not yet generated, this will be displayed
@@ -43,7 +46,7 @@ const ReleasesPage = ({ releases }: InferGetStaticPropsType<typeof getStaticProp
   }
 
   return (
-    <Page title="ユーザーさんのリリースノート一覧">
+    <Page title={`${user.name}さんのリリースノート一覧`}>
       <div>
         {releases.map(release => {
           return <ReleaseItem key={release.releaseId} release={release}></ReleaseItem>

@@ -1,8 +1,11 @@
+import { User } from '../user/types'
+
 export type Release = {
   releaseId: string
   createdAt: string
   version: string
   content: ReleaseContent
+  user: User
 }
 
 export type ReleaseContent = {

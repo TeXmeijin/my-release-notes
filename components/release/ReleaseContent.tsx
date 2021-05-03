@@ -11,6 +11,9 @@ type Props = {
 }
 
 export const ReleaseContent = (props: Props) => {
+  // TODO: 削除
+  delete props.content['fieldId']
+
   return (
     <>
       {Object.keys(props.content).map((key: ReleaseContentHeading) => {
