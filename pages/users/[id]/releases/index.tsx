@@ -11,8 +11,8 @@ import Page from '../../../../components/shared/Page'
 export const getStaticProps: GetStaticProps<{ releases: Release[]; user: User }> = async (
   context: GetStaticPropsContext<{ id: string }>
 ) => {
-  const releases = await getUserReleasesLatest({ userId: id })
-  const user = await findUser({ userId: id })
+  const releases = await getUserReleasesLatest({ userId: context.params.id })
+  const user = await findUser({ userId: context.params.id })
 
   return {
     props: {
