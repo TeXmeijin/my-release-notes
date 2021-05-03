@@ -1,5 +1,6 @@
 import { findRelease } from '@/packages/releases/releaseQuery'
 import { NextApiRequest, NextApiResponse } from 'next'
+// @see https://github.com/microsoft/playwright/issues/5862
 import * as playwright from 'playwright-aws-lambda'
 import { GetMarkUp } from '../../../components/ogp/OgpContent'
 

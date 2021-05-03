@@ -47,7 +47,10 @@ const ReleaseDetailPage = ({ release }: InferGetStaticPropsType<typeof getStatic
   }
 
   return (
-    <Page title={`バージョン${release.version}`} ogp={`${PRODUCTION_ORIGIN}/api/ogp/${release.releaseId}`}>
+    <Page
+      title={`${release.user.name}さんのリリース | v${release.version}`}
+      ogp={`${PRODUCTION_ORIGIN}/api/ogp/${release.releaseId}`}
+    >
       <div className={styles.page}>
         <div className={styles.author}>
           <img className={styles.authorImage} src={release.user.image}></img>
