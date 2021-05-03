@@ -7,6 +7,7 @@ import React from 'react'
 import Loading from '../../components/parts/loading/Loading'
 import { findRelease, getAllReleasesLatest } from '../../packages/releases/releaseQuery'
 import Page from '../../components/shared/Page'
+import { PRODUCTION_ORIGIN } from '@/types/Constants'
 
 export const getStaticProps: GetStaticProps<{ release: Release }> = async (
   context: GetStaticPropsContext<{ id: string }>
@@ -46,7 +47,7 @@ const ReleaseDetailPage = ({ release }: InferGetStaticPropsType<typeof getStatic
   }
 
   return (
-    <Page title={`バージョン${release.version}`}>
+    <Page title={`バージョン${release.version}`} ogp={`${PRODUCTION_ORIGIN}/api/ogp/${release.releaseId}`}>
       <div className={styles.page}>
         <div className={styles.releaseContainer}>
           <h1 className={styles.releaseContainer__name}>{release.version}</h1>
