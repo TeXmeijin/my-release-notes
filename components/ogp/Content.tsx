@@ -7,18 +7,26 @@ const styles = `
     display: grid;
   }
 
-  h1 { margin: auto }
+  .main {
+    padding: 64px;
+  }
 `
 
 const Content = ({ release }: OgpProps) => (
   <html>
     <head>
       <style>{styles}</style>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css"
+      ></link>
     </head>
     <body>
-      <div>
-        <ReleaseContent content={release.content}></ReleaseContent>
-      </div>
+      <main className="main">
+        <div className="content">
+          <ReleaseContent content={release.content}></ReleaseContent>
+        </div>
+      </main>
     </body>
   </html>
 )

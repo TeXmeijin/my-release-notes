@@ -18,7 +18,7 @@
     ],
     "*.{css,scss}": [
       "prettier --write",
-      "stylelint --fix"
+      "stylelint --allow-empty-input --fix"
     ]
   },
   "husky": {

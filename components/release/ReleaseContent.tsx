@@ -5,17 +5,9 @@ import {
 } from '@/types/release/type'
 import ReactMarkdown from 'react-markdown'
 import styles from '@/styles/components/ReleaseContent.module.scss'
-import { PropsWithChildren } from 'react'
 
 type Props = {
   content: ReleaseContentType
-}
-
-const ReleaseContentHeader = (props: PropsWithChildren<unknown>) => {
-  return <h3 className={styles.subHeading} {...props}></h3>
-}
-const ReleaseContentLink = (props: PropsWithChildren<unknown>) => {
-  return <a target="_blank" className={styles.link} {...props}></a>
 }
 
 export const ReleaseContent = (props: Props) => {
@@ -26,11 +18,11 @@ export const ReleaseContent = (props: Props) => {
           <div className={styles.contentItem} key={key}>
             <h3 className={styles.heading}>{MasterReleaseContents[key]}</h3>
             <ReactMarkdown
+              className="markdown-body"
               components={{
-                h1: ReleaseContentHeader,
-                h2: ReleaseContentHeader,
-                h3: ReleaseContentHeader,
-                a: ReleaseContentLink,
+                h1: 'h3',
+                h2: 'h3',
+                h3: 'h3',
               }}
               children={props.content[key]}
             ></ReactMarkdown>

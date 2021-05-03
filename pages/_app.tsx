@@ -1,4 +1,5 @@
 import '../styles/reset.scss'
+import '../styles/github-markdown.css'
 
 import type { AppProps /*, AppContext */ } from 'next/app'
 
