@@ -14,6 +14,12 @@ export default mockMethods<Methods>({
       releaseId: 'XXXX',
       createdAt: '2020-08-09T13:49:53.413Z',
       version: '26.0.0',
+      user: {
+        userId: 'YYYY',
+        name: 'meijin',
+        image: 'https://lh3.googleusercontent.com/a-/AOh14GjOZkrZMgKwcEyykl5_iULVEVkUUJd793r9_z8DF4s=s250-c',
+        createdAt: '2020-08-09T13:49:53.413Z',
+      },
       content: {
         features: `
 - GraphQLをLaravel上に実装しました

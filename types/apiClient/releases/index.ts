@@ -20,6 +20,12 @@ export default mockMethods<Methods>({
           content: {
             features: '## あああああ\n### ああああああ\nhogehoge',
           },
+          user: {
+            userId: 'YYYY',
+            name: 'meijin',
+            image: 'https://lh3.googleusercontent.com/a-/AOh14GjOZkrZMgKwcEyykl5_iULVEVkUUJd793r9_z8DF4s=s250-c',
+            createdAt: '2020-08-09T13:49:53.413Z',
+          },
         },
       ],
     },
