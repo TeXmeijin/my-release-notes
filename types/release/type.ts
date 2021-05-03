@@ -2,19 +2,16 @@ export type Release = {
   releaseId: string
   createdAt: string
   version: string
-  content: {
-    [key in ReleaseContent['type']]?: string
-  }
+  content: ReleaseContent
 }
 
-type ReleaseContent = {
-  type: 'keep' | 'features'
-  label: string
+export type ReleaseContent = {
+  [key in ReleaseContentHeading]?: string
 }
 
-export const MasterReleaseContents: ReleaseContent[] = [
-  {
-    type: 'features',
-    label: '🚀 Features',
-  },
-]
+export type ReleaseContentHeading = 'keep' | 'features'
+
+export const MasterReleaseContents: { [key in ReleaseContentHeading]: string } = {
+  features: '🚀 Features',
+  keep: 'Keep',
+}
