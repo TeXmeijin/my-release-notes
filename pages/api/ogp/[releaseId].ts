@@ -15,6 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const browser = await playwright.launchChromium({
     headless: true,
     args: ['--no-sandbox'],
+    ignoreDefaultArgs: ['--disable-extensions'],
   })
   const page = await browser.newPage({ viewport })
 
