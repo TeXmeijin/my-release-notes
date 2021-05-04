@@ -1,16 +1,29 @@
 @use "../shared/_colors.scss";
 
 .footer {
+  padding: 32px 12px;
+  background: colors.$bgMain;
+}
+
+.footer__body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 
-  padding: 40px 12px;
-  background: colors.$bgMain;
+  padding: 8px 0;
 }
 
 .link {
   color: colors.$darkLink;
+
+  & + & {
+    margin-left: 16px;
+  }
+}
+
+.credit {
+  color: colors.$darkLink;
+  font-size: 0.8rem;
 
   & + & {
     margin-left: 16px;
