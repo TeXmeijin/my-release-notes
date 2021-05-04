@@ -5,7 +5,7 @@ export const getAllUsers = async (): Promise<User[]> => {
     {
       userId: 'XXXX',
       name: 'hoge',
-      image: 'https://manalink.jp',
+      image: 'https://meijin.dev',
     },
   ] as User[]
 }
@@ -14,6 +14,6 @@ export const findUser = async ({ userId }: { userId: User['userId'] }) => {
   return {
     userId,
     name: 'hoge',
-    image: 'https://manalink.jp',
+    image: 'https://meijin.dev',
   }
 }

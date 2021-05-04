@@ -24,7 +24,7 @@ export default mockMethods<Methods>({
 - GraphQLをLaravel上に実装しました
 - Recoilのドキュメントを一通り読みました
         `,
-        keep: '# aaaa\n## aaaaa\n### bbbbbbb\n [https://manalink.jp](https://manalink.jp) ',
+        keep: '# aaaa\n## aaaaa\n### bbbbbbb\n [https://meijin.dev](https://meijin.dev) ',
       },
     },
   }),
