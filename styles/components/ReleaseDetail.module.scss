@@ -48,6 +48,13 @@
     font-size: 1.8rem;
     color: colors.$link;
     line-height: 1.8rem;
+
+    display: flex;
+    align-items: center;
+  }
+
+  .releaseContainer__category {
+    margin-left: 8px;
   }
 
   .releaseContainer__body {

@@ -12,12 +12,14 @@ import {
   findReleaseAfterOne,
 } from '../../packages/releases/releaseQuery'
 import Page from '../../components/shared/Page'
-import { PRODUCTION_ORIGIN } from '@/types/Constants'
+import { MAJOR_RELEASE, PRODUCTION_ORIGIN } from '@/types/Constants'
 import { ReleaseDetail } from '@/components/release/ReleaseDetail'
 import { TwitterShare } from '../../components/parts/TwitterShare'
 import Link from 'next/link'
 import { pagesPath } from '../../lib/$path'
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
+import { isMajorVersionUp } from '../../packages/releases/releaseSpecifications'
+import { ReleaseCategory } from '@/components/release/ReleaseCategory'
 
 export const getStaticProps: GetStaticProps<{
   release: Release
@@ -70,7 +72,14 @@ const ReleaseDetailPage = ({
       ogp={`${PRODUCTION_ORIGIN}/api/ogp/${release.releaseId}`}
     >
       <div className={styles.page}>
-        <ReleaseDetail release={release}></ReleaseDetail>
+        <ReleaseDetail
+          release={release}
+          releaseCategory={
+            isMajorVersionUp({ currentRelease: release, oldRelease: releaseBeforeOne }) ? (
+              <ReleaseCategory>{MAJOR_RELEASE}</ReleaseCategory>
+            ) : null
+          }
+        ></ReleaseDetail>
         <div className={detailNaviStyles['release-navi-list']}>
           {releaseAfterOne ? (
             <Link href={pagesPath.releases._id(releaseAfterOne.releaseId).$url()} passHref>

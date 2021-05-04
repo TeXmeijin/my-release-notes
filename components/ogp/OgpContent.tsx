@@ -4,6 +4,9 @@ import { ReleaseContent } from '../release/ReleaseContent'
 import React from 'react'
 import path from 'path'
 import fs from 'fs'
+import { ReleaseCategory } from '../release/ReleaseCategory'
+import { isMajorVersionUp } from '../../packages/releases/releaseSpecifications'
+import { MAJOR_RELEASE } from '@/types/Constants'
 
 const globalStyles = `
   html, body {
@@ -27,7 +30,7 @@ const globalStyles = `
     Segoe UI Emoji;
   }
 `
-const OgpContent = ({ release, font }: OgpProps) => (
+const OgpContent = ({ release, font, releaseCategory }: OgpProps) => (
   <html>
     <head>
       <link
@@ -93,6 +96,20 @@ const OgpContent = ({ release, font }: OgpProps) => (
           >
             v{release.version}
           </span>
+          {releaseCategory ? (
+            <div
+              style={{
+                fontSize: '14px',
+                padding: '4px 12px',
+                borderRadius: '11px',
+                border: '1px solid #e69040',
+                color: '#e69040',
+                lineHeight: 1,
+              }}
+            >
+              {MAJOR_RELEASE}
+            </div>
+          ) : null}
         </div>
         <div
           style={{
@@ -113,8 +130,14 @@ const OgpContent = ({ release, font }: OgpProps) => (
               height: '90px',
               bottom: '8px',
               background: 'linear-gradient(rgba(255, 255, 255, 0.5), #fafafa);',
+              textAlign: 'center',
+              boxSizing: 'border-box',
+              paddingTop: '60px',
+              color: '#0d8cac',
             }}
-          ></div>
+          >
+            続きはWebで！
+          </div>
         </div>
       </main>
     </body>
@@ -124,11 +147,18 @@ const OgpContent = ({ release, font }: OgpProps) => (
 export type OgpProps = {
   release: Release
   font: string
+  releaseCategory?: any
 }
 
-export const GetMarkUp = (props: { release: Release }) => {
+export const GetMarkUp = (props: { release: Release; releaseBefore: Release }) => {
   const fontPath = path.resolve(process.cwd(), './assets/MPLUSRounded1c-Bold.ttf')
   const font = fs.readFileSync(fontPath, { encoding: 'base64' })
-  const element = React.createElement(OgpContent, { font, release: props.release })
+  const element = React.createElement(OgpContent, {
+    font,
+    release: props.release,
+    releaseCategory: isMajorVersionUp({ currentRelease: props.release, oldRelease: props.releaseBefore }) ? (
+      <ReleaseCategory>Major Release</ReleaseCategory>
+    ) : null,
+  })
   return ReactDOM.renderToStaticMarkup(element)
 }
