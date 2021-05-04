@@ -27,7 +27,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   await browser.close()
 
   // Vercel Edge Networkのキャッシュを利用するための設定
-  res.setHeader('Cache-Control', 's-maxage=31536000, stale-while-revalidate')
+  res.setHeader('Cache-Control', 's-maxage=31536000, stale-while-revalidate=1')
 
   // Content Type を設定
   res.setHeader('Content-Type', 'image/png')
