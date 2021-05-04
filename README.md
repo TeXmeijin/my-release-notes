@@ -1,96 +1,91 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`microCMS`](https://microcms.io/), [`aspida`](https://github.com/aspida/aspida). And this is using `TSX`, `Incremental Static Regeneration`.
+# About
 
-This project will help you quickly implement JAMStack service with TypeScript-friendly.
+このサービスは自分のリリースノート、その名も”じぶんリリースノート”を公開できるサービスです。
 
-## Set up
+## じぶんリリースノートとは？
 
-Run the development server:
+- 以下のようなものを指します
 
-```bash
-yarn
-yarn dev
-```
+[じぶん Release Notes（ver 0.31.02）｜ryoKawamata｜note](https://note.com/ryo_kawamata/n/nc5ba86c2dd02)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 自分をなんらかのソフトウェアにたとえて、そのバージョン番号とアップデート内容を書いていくもの
+    - 自分のバージョン名とともに、ここ最近でどのような活動をしたかを書いていく
+- 特徴としては
+    - SNSの投稿や記事の投稿のように、何らかの特定のテーマに絞った投稿ではない
+    - 自分の振り返りのために使っている
+    - あとから見ると、自分がどれくらいの速度で何を学び、進歩しているかがわかる
+    - 他人から見ても、他人の勉強内容や速度が俯瞰できて、自分の活動の参考にできる
+- エンジニア界隈で流行っている感じがするが、どの業種でも成り立ちはしそう
+    - とはいえリリースノートという概念から、IT界隈に書く人は限られると思われる
 
-## TypeScript
+## 本サービスの概要
 
-This project is written in TypeScript. The configuration is `tsconfig.json`.
+- じぶんリリースノートを投稿できるサービス
+- 投稿したものは専用のページができて、SNSでシェアするとOGP画像が表示される
 
-Page components are fully `.tsx`. And Next.js supported methods are also written in TypeScript.
+[![Image from Gyazo](https://i.gyazo.com/1a2d745ba5971875384ae44fe49858ba.png)](https://gyazo.com/1a2d745ba5971875384ae44fe49858ba)
 
-For example, look at `pages/articles/[id].tsx`.
+- じぶんリリースノートを投稿するだけだと、既存のブログサービスに投稿すればいいと思われるが、以下のようなメリットが有る
+    - QiitaやZenn→あくまで自分の学習ログなので投稿しにくい※QiitaやZennに投稿した内容をじぶんリリースノートに加えるのはあり
+    - note→すでにnoteを雑多な目的で利用しているのならば、投稿が混ざってしまう
+    - SNSでシェアするときにOGP画像が専用で付与されるので本サービスを利用するほうが映える
+- 入力項目が整備されている
+    - リリースごとに入力する内容は以下の通り
+        - バージョン
+        - リリース内容
+            - Keep
+            - Problem
+            - Try
+            - Features：新しくできるようになったこと
+            - Thanks To：今回のリリースにあたって感謝したい人
+- 投稿する感覚は任意。個人的には毎月とか毎週というように固定頻度でやり、年齢を重ねるごとや転職するごとにメジャーアップデートにするのが良さそうと思っている
 
-```typescript
-export const getStaticProps: GetStaticProps<{ article: MicroCmsArticle }> = async (context: GetStaticPropsContext<{id: string}>) => {
-  // ...
-}
-```
+---
 
-## Incremental Static Regeneration
+### β版について
 
-This project supports [Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration).
+- 現時点では、開発者（https://meijin.dev）がmicroCMS上に保存したコンテンツを取得して表示するだけのサービスとなっています
+- 不特定多数のユーザーによる投稿、閲覧ニーズを確認すれば、認証機能や投稿機能を開発します
 
-## What's microCMS?
+## 技術スタック
 
-`microCMS` is a headless CMS service in Japan. It is similar to such as strapi, Contentful, DatoCMS, and so on.
+### Next.js
 
-Let's create account of `microCMS` for free, and make one api that has `/articles` path and create first article content.
+言わずとしれたReactのWebフレームワーク。今回は複数ページを持つアプリケーションでかつ今後の機能追加がある程度見込まれること、そしてAPI Routesによって動的OGP生成の実現性が高そうという点で選びました。
 
-This sample uses `/articles` API in `microCMS`. Please make an API that has `/articles` path, and it has following properties: `title`, `body`, `description` (there are string types).
+### React
 
-Then you can access the api by below command.
+Reactを選んだのは好みです。あわよくばRecoilやReact-flowを試したかったのですが、特性上ステート管理やリッチな機能が要らなさそうなのでこのまま薄いアプリケーションで進めるかもしれない。
 
-```bash
-curl "https://<your-project-name>.microcms.io/api/v1/articles" -H "X-API-KEY: <your api key>"
-```
+### react-icon
 
-## What's aspida?
+軽く調べた程度ですが、いろいろなアイコンを引っ張ってくることができ、デフォルトで分割インポートとReactコンポーネント対応がされており、非常に対応が簡単に導入できました。
 
-Aspida is TypeScript friendly HTTP client wrapper for the browser and node.js.
-          
-Look `types/apiClient` directory.
+Heroiconsを本サービスでは利用しています。
 
-Under the directory, you must define your backend API req/res types.
-And, run the command `yarn build:api` and you will get `types/apiClient/$api.ts`.
+### CSS Modules
 
-Then, check `modules/apiClient.ts`. This initializes aspida client and export it. With optimizing for `microCMS` APIs.
+CSS in JSは使おうと思いましたが、本格的なアプリケーションになる前に入れると設計がむしろカオスになる予感があったので入れませんでした。
 
-*Notice:* at local development, we can use [`aspida-mock`](https://github.com/aspida/aspida/tree/master/packages/aspida-mock). The library make us building mock server and response data by using same API as real backend APIs. Please look at `modules/apiClient.ts`.
+### Playwright
 
-You can get microCMS content by following code.
+OGP画像自動生成のために利用しています。
 
-```typescript
-const article = await apiClient.articles._cmsId(id).$get()
-```
+開発していた時点では、playwright-coreの次期バージョンでないとVercel環境で動作しませんでした。
 
-**Notice:** each you implement API types under `types/apiClient` directory, you must run `yarn build:api` command.
+https://github.com/microsoft/playwright/issues/5862
 
-## Environments
+対応に必要だったと思われるポイントは主に2点です。
 
-You can touch the env file. Called `.env.local`
+- playwright、playwright-coreの次期バージョンを入れ、バージョンを揃えておくこと
+- Vercel環境のNodeは12にしておくこと
 
-```dotenv
-MICROCMS_GET_API_KEY=<your-microcms-get-api-key>
-MICROCMS_BASE_URL=https://<your-project-name>.microcms.io/api/v1
-```
+これらを満たしているときのみ、OGP生成が動作しました。それ以外は色々なエラーログが表示され、すべてIssueを追いましたがバージョンアップ以外に解答がないようでした。
 
-Only this sample, aspida uses mock-server at local development. So the env file isn't needed. But you must set these env values at [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) console.
+### react-lottie
 
-## Deploy on Vercel
+ReactでLottie FilesからダウンロードしたJSONを使えるライブラリです。一瞬で可愛らしいアニメーションを利用できました。これは便利。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### react-markdown
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## ESLint
-The settings for `eslint` and `husky` are also completed, but `CSS in JS` is not installed because there is no standard.
-
-Of course, you can add and remove rules by editting `.eslintrc.js`.
-
-## Contribution
-I'm not familiar with React and Next.js, so if you have any suggestions for resolving errors or better improvements, please contribute via issue or pull request.
-
-## Author
-
-Twitter: [@Meijin_garden](https://twitter.com/Meijin_garden)
+Reactのマークダウンパーサーです。コンポーネントの変換にも対応しており、柔軟なカスタマイズが可能です。remarkなどを生で使うよりよほど良いです。
