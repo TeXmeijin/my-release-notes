@@ -89,3 +89,9 @@ ReactでLottie FilesからダウンロードしたJSONを使えるライブラ�
 ### react-markdown
 
 Reactのマークダウンパーサーです。コンポーネントの変換にも対応しており、柔軟なカスタマイズが可能です。remarkなどを生で使うよりよほど良いです。
+
+### Google Analytics
+
+余計なDependencyを入れたくなかったので以下の記事の通り純粋にスクリプトを埋め込む方針でやりました。
+
+https://panda-program.com/posts/nextjs-google-analytics
