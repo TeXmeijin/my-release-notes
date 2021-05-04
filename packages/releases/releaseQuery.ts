@@ -19,7 +19,7 @@ export const findReleaseAfterOne: ({ id: string }) => Promise<Release | null> = 
     })
   ).contents
 
-  return afterReleases.length ? afterReleases[0] : null
+  return afterReleases.length ? afterReleases[afterReleases.length - 1] : null
 }
 
 export const findReleaseBeforeOne: ({ id: string }) => Promise<Release | null> = async ({ id }) => {
