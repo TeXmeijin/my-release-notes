@@ -1,0 +1,77 @@
+@use "../shared/_colors.scss";
+@use "../shared/_mixins.scss";
+
+.wrapper {
+  padding: 12px;
+}
+
+.heading {
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.statement {
+  font-size: 0.9rem;
+}
+
+.fv {
+  padding-top: 40px;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+}
+
+.release-list {
+  padding: 12px 24px;
+  border: 3px solid colors.$link;
+  border-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s;
+
+  &:hover {
+    background: darken(colors.$white, 5%);
+  }
+}
+
+@include mixins.mq('md') {
+  .wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .heading {
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  .statement {
+    margin-top: 24px;
+    max-width: 440px;
+  }
+
+  .links {
+    padding: 60px 0;
+  }
+
+  .fv {
+    padding-top: 120px;
+    position: relative;
+  }
+
+  .fv-animation {
+    position: absolute;
+    right: 24px;
+    bottom: -24px;
+  }
+}
+
+.caution {
+  margin-top: 40px;
+  padding: 16px;
+  background: #ccc;
+  font-size: 0.9rem;
+}
