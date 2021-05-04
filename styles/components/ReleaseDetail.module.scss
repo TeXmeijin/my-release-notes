@@ -1,12 +1,12 @@
 @use "../shared/_colors.scss";
 
-.page {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 24px 12px;
+.root {
+  display: flex;
+  align-items: flex-start;
 }
 
 .author {
+  padding: 24px 0;
   display: flex;
   align-items: center;
   padding-bottom: 8px;
@@ -18,23 +18,31 @@
   }
 
   .authorImage {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
   }
 }
 
 .releaseContainer {
-  display: flex;
-  margin-top: 8px;
+  padding: 24px 0;
+  padding-left: 16px;
+  margin-left: 16px;
+  border-left: 2px solid #eee;
+
+  .releaseContainer__version {
+    font-size: 0.9rem;
+    color: #777;
+  }
 
   .releaseContainer__name {
     font-weight: bold;
     font-size: 1.8rem;
     color: colors.$link;
+    line-height: 1.8rem;
   }
 
   .releaseContainer__body {
-    margin-left: 24px;
+    margin-top: 24px;
   }
 }

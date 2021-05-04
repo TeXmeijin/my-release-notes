@@ -108,12 +108,24 @@ h4,
 p,
 a,
 span,
-div {
-  line-height: 1.8;
+div,
+li {
   letter-spacing: 0.5px;
   color: colors.$body;
 }
 
+p,
+a,
+span,
+div,
+li {
+  line-height: 1.8;
+}
+
 ul {
   padding-left: 32px;
+}
+
+li {
+  list-style-type: none;
 }

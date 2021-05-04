@@ -1,13 +1,13 @@
-import { ReleaseContent } from '@/components/release/ReleaseContent'
 import { Release } from '@/types/release/type'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import styles from '@/styles/pages/ReleaseDetail.module.scss'
+import styles from '@/styles/pages/Wrapper.module.scss'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Loading from '../../components/parts/loading/Loading'
 import { findRelease, getAllReleasesLatest } from '../../packages/releases/releaseQuery'
 import Page from '../../components/shared/Page'
 import { PRODUCTION_ORIGIN } from '@/types/Constants'
+import { ReleaseDetail } from '@/components/release/ReleaseDetail'
 
 export const getStaticProps: GetStaticProps<{ release: Release }> = async (
   context: GetStaticPropsContext<{ id: string }>
@@ -52,17 +52,7 @@ const ReleaseDetailPage = ({ release }: InferGetStaticPropsType<typeof getStatic
       ogp={`${PRODUCTION_ORIGIN}/api/ogp/${release.releaseId}`}
     >
       <div className={styles.page}>
-        <div className={styles.author}>
-          <img className={styles.authorImage} src={release.user.image}></img>
-          <span className={styles.authorName}>{release.user.name}</span>
-          <span>さんのリリース</span>
-        </div>
-        <div className={styles.releaseContainer}>
-          <h1 className={styles.releaseContainer__name}>{release.version}</h1>
-          <div className={styles.releaseContainer__body}>
-            <ReleaseContent content={release.content}></ReleaseContent>
-          </div>
-        </div>
+        <ReleaseDetail release={release}></ReleaseDetail>
       </div>
     </Page>
   )
