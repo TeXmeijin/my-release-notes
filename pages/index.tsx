@@ -4,7 +4,7 @@ import { pagesPath } from '../lib/$path'
 import styles from '@/styles/pages/Top.module.scss'
 import { HiChevronRight } from 'react-icons/hi'
 import Lottie from 'react-lottie'
-import * as animationData from '@/assets/29488-note-icon'
+import * as animationData from '@/assets/29488-note-icon.json'
 
 const Top = () => {
   return (
