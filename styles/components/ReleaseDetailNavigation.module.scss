@@ -1,0 +1,16 @@
+@use "../shared/_colors.scss";
+
+.release-navi {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+
+  .release-navi__text {
+    color: colors.$link;
+  }
+}
+
+.release-navi-list {
+  display: flex;
+  justify-content: space-between;
+}

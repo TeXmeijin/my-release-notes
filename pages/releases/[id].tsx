@@ -1,18 +1,29 @@
 import { Release } from '@/types/release/type'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import styles from '@/styles/pages/Wrapper.module.scss'
+import detailNaviStyles from '@/styles/components/ReleaseDetailNavigation.module.scss'
 import { useRouter } from 'next/router'
 import React from 'react'
 import Loading from '../../components/parts/loading/Loading'
-import { findRelease, getAllReleasesLatest } from '../../packages/releases/releaseQuery'
+import {
+  findRelease,
+  findReleaseBeforeOne,
+  getAllReleasesLatest,
+  findReleaseAfterOne,
+} from '../../packages/releases/releaseQuery'
 import Page from '../../components/shared/Page'
 import { PRODUCTION_ORIGIN } from '@/types/Constants'
 import { ReleaseDetail } from '@/components/release/ReleaseDetail'
 import { TwitterShare } from '../../components/parts/TwitterShare'
+import Link from 'next/link'
+import { pagesPath } from '../../lib/$path'
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 
-export const getStaticProps: GetStaticProps<{ release: Release }> = async (
-  context: GetStaticPropsContext<{ id: string }>
-) => {
+export const getStaticProps: GetStaticProps<{
+  release: Release
+  releaseBeforeOne?: Release
+  releaseAfterOne?: Release
+}> = async (context: GetStaticPropsContext<{ id: string }>) => {
   const { id } = context.params
 
   const release = await findRelease({ id })
@@ -20,6 +31,8 @@ export const getStaticProps: GetStaticProps<{ release: Release }> = async (
   return {
     props: {
       release,
+      releaseBeforeOne: await findReleaseBeforeOne({ id }),
+      releaseAfterOne: await findReleaseAfterOne({ id }),
     },
     revalidate: 1,
   }
@@ -38,7 +51,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const ReleaseDetailPage = ({ release }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const ReleaseDetailPage = ({
+  release,
+  releaseBeforeOne,
+  releaseAfterOne,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter()
 
   // If the page is not yet generated, this will be displayed
@@ -54,6 +71,26 @@ const ReleaseDetailPage = ({ release }: InferGetStaticPropsType<typeof getStatic
     >
       <div className={styles.page}>
         <ReleaseDetail release={release}></ReleaseDetail>
+        <div className={detailNaviStyles['release-navi-list']}>
+          {releaseAfterOne ? (
+            <Link href={pagesPath.releases._id(releaseAfterOne.releaseId).$url()} passHref>
+              <a className={detailNaviStyles['release-navi']}>
+                <HiChevronLeft></HiChevronLeft>
+                <span className={detailNaviStyles['release-navi__text']}>v{releaseAfterOne.version}</span>
+              </a>
+            </Link>
+          ) : (
+            <span className={detailNaviStyles['release-navi']}></span>
+          )}
+          {releaseBeforeOne ? (
+            <Link href={pagesPath.releases._id(releaseBeforeOne.releaseId).$url()} passHref>
+              <a className={detailNaviStyles['release-navi']}>
+                <span className={detailNaviStyles['release-navi__text']}>v{releaseBeforeOne.version}</span>
+                <HiChevronRight></HiChevronRight>
+              </a>
+            </Link>
+          ) : null}
+        </div>
         <div
           style={{
             marginTop: '24px',
