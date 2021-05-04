@@ -67,8 +67,8 @@ const OgpContent = ({ release, font }: OgpProps) => (
             src={release.user.image}
             alt={release.user.name}
             style={{
-              width: '64px',
-              height: '64px',
+              width: '80px',
+              height: '80px',
               borderRadius: '50%',
               border: '2px solid #8a8fa3',
             }}
