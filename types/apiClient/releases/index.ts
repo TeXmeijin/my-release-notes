@@ -3,7 +3,7 @@ import { mockMethods } from 'aspida-mock/dist'
 
 export interface Methods {
   get: {
-    query: {
+    query?: {
       filters: string
     }
     resBody: { contents: Release[] }
