@@ -4,6 +4,7 @@ export type Release = {
   releaseId: string
   releasedAt: string
   version: string
+  majorRelease: boolean
   content: ReleaseContent
   user: User
 }

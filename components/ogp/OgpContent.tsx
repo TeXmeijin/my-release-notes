@@ -1,12 +1,11 @@
-import { Release } from '@/types/release/type'
-import ReactDOM from 'react-dom/server'
-import { ReleaseContent } from '../release/ReleaseContent'
-import React from 'react'
-import path from 'path'
-import fs from 'fs'
-import { ReleaseCategory } from '../release/ReleaseCategory'
-import { isMajorVersionUp } from '../../packages/releases/releaseSpecifications'
 import { MAJOR_RELEASE } from '@/types/Constants'
+import { Release } from '@/types/release/type'
+import fs from 'fs'
+import path from 'path'
+import React from 'react'
+import ReactDOM from 'react-dom/server'
+import { ReleaseCategory } from '../release/ReleaseCategory'
+import { ReleaseContent } from '../release/ReleaseContent'
 
 const globalStyles = `
   html, body {
@@ -30,7 +29,7 @@ const globalStyles = `
     Segoe UI Emoji;
   }
 `
-const OgpContent = ({ release, font, releaseCategory }: OgpProps) => (
+const OgpContent = ({ release, font }: OgpProps) => (
   <html>
     <head>
       <link
@@ -96,7 +95,7 @@ const OgpContent = ({ release, font, releaseCategory }: OgpProps) => (
           >
             v{release.version}
           </span>
-          {releaseCategory ? (
+          {release.majorRelease ? (
             <div
               style={{
                 fontSize: '14px',
@@ -147,18 +146,14 @@ const OgpContent = ({ release, font, releaseCategory }: OgpProps) => (
 export type OgpProps = {
   release: Release
   font: string
-  releaseCategory?: any
 }
 
-export const GetMarkUp = (props: { release: Release; releaseBefore: Release }) => {
+export const GetMarkUp = (props: { release: Release }) => {
   const fontPath = path.resolve(process.cwd(), './assets/MPLUSRounded1c-Bold.ttf')
   const font = fs.readFileSync(fontPath, { encoding: 'base64' })
   const element = React.createElement(OgpContent, {
     font,
     release: props.release,
-    releaseCategory: isMajorVersionUp({ currentRelease: props.release, oldRelease: props.releaseBefore }) ? (
-      <ReleaseCategory>Major Release</ReleaseCategory>
-    ) : null,
   })
   return ReactDOM.renderToStaticMarkup(element)
 }

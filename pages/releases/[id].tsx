@@ -1,25 +1,24 @@
+import { ReleaseCategory } from '@/components/release/ReleaseCategory'
+import { ReleaseDetail } from '@/components/release/ReleaseDetail'
+import detailNaviStyles from '@/styles/components/ReleaseDetailNavigation.module.scss'
+import styles from '@/styles/pages/Wrapper.module.scss'
+import { MAJOR_RELEASE, PRODUCTION_ORIGIN } from '@/types/Constants'
 import { Release } from '@/types/release/type'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import styles from '@/styles/pages/Wrapper.module.scss'
-import detailNaviStyles from '@/styles/components/ReleaseDetailNavigation.module.scss'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import Loading from '../../components/parts/loading/Loading'
+import { TwitterShare } from '../../components/parts/TwitterShare'
+import Page from '../../components/shared/Page'
+import { pagesPath } from '../../lib/$path'
 import {
   findRelease,
+  findReleaseAfterOne,
   findReleaseBeforeOne,
   getAllReleasesLatest,
-  findReleaseAfterOne,
 } from '../../packages/releases/releaseQuery'
-import Page from '../../components/shared/Page'
-import { MAJOR_RELEASE, PRODUCTION_ORIGIN } from '@/types/Constants'
-import { ReleaseDetail } from '@/components/release/ReleaseDetail'
-import { TwitterShare } from '../../components/parts/TwitterShare'
-import Link from 'next/link'
-import { pagesPath } from '../../lib/$path'
-import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
-import { isMajorVersionUp } from '../../packages/releases/releaseSpecifications'
-import { ReleaseCategory } from '@/components/release/ReleaseCategory'
 
 export const getStaticProps: GetStaticProps<{
   release: Release
@@ -72,14 +71,7 @@ const ReleaseDetailPage = ({
       ogp={`${PRODUCTION_ORIGIN}/api/ogp/${release.releaseId}`}
     >
       <div className={styles.page}>
-        <ReleaseDetail
-          release={release}
-          releaseCategory={
-            isMajorVersionUp({ currentRelease: release, oldRelease: releaseBeforeOne }) ? (
-              <ReleaseCategory>{MAJOR_RELEASE}</ReleaseCategory>
-            ) : null
-          }
-        ></ReleaseDetail>
+        <ReleaseDetail release={release}></ReleaseDetail>
         <div className={detailNaviStyles['release-navi-list']}>
           {releaseAfterOne ? (
             <Link href={pagesPath.releases._id(releaseAfterOne.releaseId).$url()} passHref>

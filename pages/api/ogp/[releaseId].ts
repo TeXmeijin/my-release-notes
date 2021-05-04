@@ -1,4 +1,4 @@
-import { findRelease, findReleaseBeforeOne } from '@/packages/releases/releaseQuery'
+import { findRelease } from '@/packages/releases/releaseQuery'
 import { NextApiRequest, NextApiResponse } from 'next'
 // @see https://github.com/microsoft/playwright/issues/5862
 import * as playwright from 'playwright-aws-lambda'
@@ -7,7 +7,6 @@ import { GetMarkUp } from '../../../components/ogp/OgpContent'
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   // Releaseオブジェクトの取得
   const release = await findRelease({ id: `${req.query.releaseId}` })
-  const releaseBefore = await findReleaseBeforeOne({ id: `${req.query.releaseId}` })
 
   // サイズの設定
   const viewport = { width: 1200, height: 630 }
@@ -17,7 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const page = await browser.newPage({ viewport })
 
   // HTMLの生成
-  const markup = GetMarkUp({ release, releaseBefore })
+  const markup = GetMarkUp({ release })
   const html = `<!doctype html>${markup}`
 
   // HTMLをセットして、ページの読み込み完了を待つ
