@@ -65,11 +65,21 @@ const ReleaseDetailPage = ({
     return Loading
   }
 
+  const strLimit = (str: string, limit: number) => {
+    if (!str || !str.split) {
+      return ''
+    }
+    if (str.split(/(?=[\s\S])/u).length > limit) {
+      return str.substring(0, limit) + '...'
+    }
+    return str
+  }
+
   return (
     <Page
       title={`${release.user.name}さんのリリース | v${release.version}`}
       ogp={`${PRODUCTION_ORIGIN}/api/ogp/${release.releaseId}`}
-      description={Object.values(release.content).join(' ')}
+      description={strLimit(Object.values(release.content).join(' '), 200)}
     >
       <div className={styles.page}>
         <ReleaseDetail release={release}></ReleaseDetail>
