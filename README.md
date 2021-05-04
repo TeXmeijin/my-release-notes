@@ -90,6 +90,12 @@ ReactでLottie FilesからダウンロードしたJSONを使えるライブラ�
 
 Reactのマークダウンパーサーです。コンポーネントの変換にも対応しており、柔軟なカスタマイズが可能です。remarkなどを生で使うよりよほど良いです。
 
+### github-markdown.css
+
+GitHub風のデザインを再現したいときにこのCSSを入れたらとりあえずそれっぽくなりました。
+
+https://github.com/sindresorhus/github-markdown-css
+
 ### Google Analytics
 
 余計なDependencyを入れたくなかったので以下の記事の通り純粋にスクリプトを埋め込む方針でやりました。
