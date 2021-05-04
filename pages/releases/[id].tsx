@@ -8,6 +8,7 @@ import { findRelease, getAllReleasesLatest } from '../../packages/releases/relea
 import Page from '../../components/shared/Page'
 import { PRODUCTION_ORIGIN } from '@/types/Constants'
 import { ReleaseDetail } from '@/components/release/ReleaseDetail'
+import { TwitterShare } from '../../components/parts/TwitterShare'
 
 export const getStaticProps: GetStaticProps<{ release: Release }> = async (
   context: GetStaticPropsContext<{ id: string }>
@@ -53,6 +54,14 @@ const ReleaseDetailPage = ({ release }: InferGetStaticPropsType<typeof getStatic
     >
       <div className={styles.page}>
         <ReleaseDetail release={release}></ReleaseDetail>
+        <div
+          style={{
+            marginTop: '24px',
+            marginBottom: '40px',
+          }}
+        >
+          <TwitterShare release={release}></TwitterShare>
+        </div>
       </div>
     </Page>
   )

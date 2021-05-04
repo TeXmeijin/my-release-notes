@@ -4,12 +4,10 @@ import { pagesPath } from '../../lib/$path'
 
 export const MyHeader = () => {
   return (
-    <>
-      <header className={styles.header}>
-        <Link href={pagesPath.$url()} passHref>
-          <a className={styles.serviceName}>じぶんRelease Notes(β)</a>
-        </Link>
-      </header>
-    </>
+    <header className={styles.header}>
+      <Link href={pagesPath.$url()} passHref>
+        <a className={styles.serviceName}>じぶんRelease Notes(β)</a>
+      </Link>
+    </header>
   )
 }

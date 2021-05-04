@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React, { ReactNode, useEffect } from 'react'
 import { MyHeader } from './MyHeader'
+import { MyFooter } from './MyFooter'
 type Props = {
   children: ReactNode[] | ReactNode
 } & Partial<Meta>
@@ -67,7 +68,7 @@ const Page: React.FC<Props> = ({ children, ...meta }) => {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" key="twcard" />
-        <meta name="twitter:creator" content="@noschoolasia" key="twhandle" />
+        <meta name="twitter:creator" content="@meijin_garden" key="twhandle" />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" key="ogtype" />
@@ -77,10 +78,23 @@ const Page: React.FC<Props> = ({ children, ...meta }) => {
         <meta property="og:title" content={`${computedMeta.title} | ${computedMeta.titleSuffix}`} key="ogtitle" />
         <meta property="og:description" content={computedMeta.description} key="ogdesc" />
       </Head>
-      <div>
+      <main
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh',
+        }}
+      >
         <MyHeader />
-        <main>{children}</main>
-      </div>
+        <section
+          style={{
+            flex: 1,
+          }}
+        >
+          {children}
+        </section>
+        <MyFooter></MyFooter>
+      </main>
     </>
   )
 }
