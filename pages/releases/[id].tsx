@@ -69,6 +69,7 @@ const ReleaseDetailPage = ({
     <Page
       title={`${release.user.name}さんのリリース | v${release.version}`}
       ogp={`${PRODUCTION_ORIGIN}/api/ogp/${release.releaseId}`}
+      description={Object.values(release.content).join(' ')}
     >
       <div className={styles.page}>
         <ReleaseDetail release={release}></ReleaseDetail>
