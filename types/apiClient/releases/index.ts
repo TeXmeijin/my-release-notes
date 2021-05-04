@@ -19,6 +19,7 @@ export default mockMethods<Methods>({
         {
           releaseId: 'XXXX',
           releasedAt: '2020-08-09T13:49:53.413Z',
+          majorRelease: false,
           version: '26.0.0',
           content: {
             features: '## あああああ\n### ああああああ\nhogehoge',
