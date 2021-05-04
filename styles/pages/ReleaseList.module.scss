@@ -1,8 +1,16 @@
+@use "../shared/_mixins.scss";
+
 .release-list-header {
+  margin-top: 24px;
   font-weight: bold;
   font-size: 1.6rem;
 }
 
 .release-list {
   margin-top: 24px;
+  padding-left: 0;
+
+  @include mixins.mq('md') {
+    padding-left: 32px;
+  }
 }

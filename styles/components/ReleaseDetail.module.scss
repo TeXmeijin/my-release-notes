@@ -1,8 +1,11 @@
 @use "../shared/_colors.scss";
+@use "../shared/_mixins.scss";
 
 .root {
-  display: flex;
-  align-items: flex-start;
+  @include mixins.mq('md') {
+    display: flex;
+    align-items: flex-start;
+  }
 }
 
 .author {
@@ -11,6 +14,11 @@
   align-items: center;
   padding-bottom: 8px;
   font-size: 0.9rem;
+
+  @include mixins.mq('md') {
+    min-width: 120px;
+    max-width: 120px;
+  }
 
   .authorName {
     margin-left: 12px;

@@ -19,9 +19,9 @@ export const getStaticProps: GetStaticProps<{ releases: Release[] }> = async () 
 
 const ReleasesPage = ({ releases }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Page title="みんなのリリースノート">
+    <Page title="公開中のリリースノート">
       <div className={pageStyles.page}>
-        <h1 className={styles['release-list-header']}>みんなのリリースノート</h1>
+        <h1 className={styles['release-list-header']}>公開中のリリースノート</h1>
         <ul className={styles['release-list']}>
           {releases.map(release => {
             return (

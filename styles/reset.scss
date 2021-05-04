@@ -112,6 +112,7 @@ div,
 li {
   letter-spacing: 0.5px;
   color: colors.$body;
+  word-break: break-all;
 }
 
 p,
