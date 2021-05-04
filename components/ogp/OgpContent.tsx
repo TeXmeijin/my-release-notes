@@ -15,6 +15,13 @@ const globalStyles = `
     Segoe UI Emoji;
   }
 
+  body {
+    width: 800px;
+    height: 420px;
+    transform: scale(1.5);
+    transform-origin: left top;
+  }
+
   .markdown-body.markdown-body {
     font-family: 'M PLUS Rounded 1c', Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji,
     Segoe UI Emoji;
@@ -42,7 +49,7 @@ const OgpContent = ({ release, font }: OgpProps) => (
     <body>
       <main
         style={{
-          padding: '64px',
+          padding: '42px',
           display: 'flex',
           background: '#112b33',
         }}
@@ -52,23 +59,23 @@ const OgpContent = ({ release, font }: OgpProps) => (
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            minWidth: '240px',
-            marginLeft: '30px',
+            minWidth: '80px',
+            marginLeft: '10px',
           }}
         >
           <img
             src={release.user.image}
             alt={release.user.name}
             style={{
-              width: '128px',
-              height: '128px',
+              width: '64px',
+              height: '64px',
               borderRadius: '50%',
-              border: '3px solid #8a8fa3',
+              border: '2px solid #8a8fa3',
             }}
           />
           <span
             style={{
-              marginTop: '20px',
+              marginTop: '12px',
               textTransform: 'uppercase',
               color: '#d9e0eb',
               fontSize: '1.4rem',
@@ -90,12 +97,24 @@ const OgpContent = ({ release, font }: OgpProps) => (
         <div
           style={{
             marginLeft: '16px',
-            padding: '24px',
+            padding: '12px 24px',
             background: '#fafafa',
             borderRadius: '8px',
+            flex: 1,
+            maxHeight: '340px',
+            position: 'relative',
           }}
         >
           <ReleaseContent content={release.content}></ReleaseContent>
+          <div
+            style={{
+              position: 'absolute',
+              width: 'calc(100% - 48px)',
+              height: '90px',
+              bottom: '8px',
+              background: 'linear-gradient(rgba(255, 255, 255, 0.5), #fafafa);',
+            }}
+          ></div>
         </div>
       </main>
     </body>
