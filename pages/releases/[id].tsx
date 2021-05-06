@@ -78,7 +78,7 @@ const ReleaseDetailPage = ({
   return (
     <Page
       title={`${release.user.name}さんのリリース | v${release.version}`}
-      ogp={`${PRODUCTION_ORIGIN}/api/ogp/${release.releaseId}`}
+      ogp={`${PRODUCTION_ORIGIN}/api/ogp/${release.releaseId}?_hash=${Math.random().toString(36).substr(2, 8)}`}
       description={strLimit(Object.values(release.content).join(' '), 200)}
     >
       <div className={styles.page}>

@@ -51,7 +51,7 @@ const OgpContent = ({ release, font }: OgpProps) => (
     <body>
       <main
         style={{
-          padding: '42px',
+          padding: '40px',
           display: 'flex',
           background: '#112b33',
         }}
@@ -61,7 +61,7 @@ const OgpContent = ({ release, font }: OgpProps) => (
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            minWidth: '80px',
+            minWidth: '120px',
             marginLeft: '10px',
           }}
         >
@@ -117,8 +117,9 @@ const OgpContent = ({ release, font }: OgpProps) => (
             background: '#fafafa',
             borderRadius: '8px',
             flex: 1,
-            maxHeight: '340px',
+            maxHeight: '316px',
             position: 'relative',
+            overflowY: 'hidden',
           }}
         >
           <ReleaseContent content={release.content}></ReleaseContent>
@@ -127,8 +128,8 @@ const OgpContent = ({ release, font }: OgpProps) => (
               position: 'absolute',
               width: 'calc(100% - 48px)',
               height: '90px',
-              bottom: '8px',
-              background: 'linear-gradient(rgba(255, 255, 255, 0.5), #fafafa);',
+              bottom: '0',
+              background: 'linear-gradient(rgba(255, 255, 255, 0.5), #fafafa)',
               textAlign: 'center',
               boxSizing: 'border-box',
               paddingTop: '60px',
