@@ -8,6 +8,9 @@ export const MyHeader = () => {
       <Link href={pagesPath.$url()} passHref>
         <a className={styles.serviceName}>じぶんRelease Notes(β)</a>
       </Link>
+      <Link href={pagesPath.post.$url()} passHref>
+        <a className={styles.postButton}>投稿する</a>
+      </Link>
     </header>
   )
 }
