@@ -1,0 +1,15 @@
+@use "../shared/_colors.scss";
+@use "../shared/_mixins.scss";
+
+.heading {
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.caution {
+  margin-top: 40px;
+  padding: 16px;
+  background: #ccc;
+  font-size: 0.9rem;
+}

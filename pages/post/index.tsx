@@ -1,24 +1,15 @@
 import Page from '@/components/shared/Page'
-import styles from '@/styles/pages/Top.module.scss'
+import styles from '@/styles/pages/Post.module.scss'
+import pageStyles from '@/styles/pages/Wrapper.module.scss'
+
 import Lottie from 'react-lottie'
 import * as animationData from '@/assets/29488-note-icon.json'
 
 const Post = () => {
   return (
     <Page>
-      <div
-        style={{
-          padding: '40px 12px',
-        }}
-      >
-        <h1
-          style={{
-            fontWeight: 'bold',
-            fontSize: '1.4rem',
-          }}
-        >
-          投稿機能は今後実装予定です！
-        </h1>
+      <div className={pageStyles.page}>
+        <h1 className={styles.heading}>投稿機能は今後実装予定です！</h1>
         <div className={styles.caution}>
           <p>
             ”じぶんRelease Notes”は現在ベータ版として、開発者のmeijin(
