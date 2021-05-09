@@ -7,7 +7,7 @@ import * as animationData from '@/assets/29488-note-icon.json'
 
 const Post = () => {
   return (
-    <Page>
+    <Page title="投稿する">
       <div className={pageStyles.page}>
         <h1 className={styles.heading}>投稿機能は今後実装予定です！</h1>
         <div className={styles.caution}>
