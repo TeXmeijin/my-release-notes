@@ -6,6 +6,7 @@ export type Release = {
   version: string
   majorRelease: boolean
   content: ReleaseContent
+  links?: string
   user: User
 }
 
