@@ -32,10 +32,7 @@ export const ReleaseDetail = ({ release }: { release: ReleaseType }) => {
               href="https://www.amazon.co.jp/gp/product/B08X11GD52/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B08X11GD52&linkCode=as2&tag=meijin04-22&linkId=86fd74b70fdd51071fb5cd6b9065e42c"
               rel="noreferrer"
             >
-              <img
-                border="0"
-                src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=JP&ASIN=B08X11GD52&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=meijin04-22"
-              />
+              <img src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=JP&ASIN=B08X11GD52&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=meijin04-22" />
             </a>
           </div>
         )}
