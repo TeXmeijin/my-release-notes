@@ -28,6 +28,9 @@ export const ReleaseDetail = ({ release }: { release: ReleaseType }) => {
           <div className={styles.links}>
             <h3 className={styles.links__heading}>参考文献</h3>
             <div className={styles.links__content} dangerouslySetInnerHTML={{ __html: release.links }} />
+            <p className={styles.links__notice}>
+              ※Amazonのアソシエイトとして、meijinは適格販売により収入を得ています。
+            </p>
           </div>
         )}
       </div>
