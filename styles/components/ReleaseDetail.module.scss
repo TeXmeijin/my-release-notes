@@ -61,3 +61,17 @@
     margin-top: 24px;
   }
 }
+
+.links {
+  margin-top: 24px;
+  .links__heading {
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+  .links__content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 8px;
+  }
+}
